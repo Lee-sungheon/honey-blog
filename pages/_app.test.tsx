@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from './index';
+import Type from '../components/Type';
 
 test('the counter starts at 0', () => {
   render(<Home />);
@@ -51,4 +52,16 @@ test('Prevent the -, + button from being pressed when the on/off button is click
   const minusButtonElement = screen.getByTestId('minus-button');
   expect(plusButtonElement).toBeDisabled();
   expect(minusButtonElement).toBeDisabled();
+});
+
+test('display product images from server', async () => {
+  render(<Type orderType={'products'} />);
+
+  const productImages = await screen.findAllByRole<HTMLImageElement>('img', {
+    name: /product$/i,
+  });
+  await waitFor(() => expect(productImages).toHaveLength(2));
+
+  const altText = productImages.map((element) => element.alt);
+  expect(altText).toEqual(['America product', 'England product']);
 });
