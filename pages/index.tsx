@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
+import styled from '@emotion/styled';
 
-import styles from '../styles/Home.module.css';
+const SomeDiv = styled.div`
+  background-color: ${(props) => props.theme.colors.primary};
+`;
 
 const Home: NextPage = () => {
   const [counter, setCounter] = useState(0);
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <SomeDiv>
       <h3 data-testid={'counter'}>{counter}</h3>
       <button data-testid={'plus-button'} disabled={disabled} onClick={() => setCounter((counter) => counter + 1)}>
         {'+'}
@@ -22,7 +25,7 @@ const Home: NextPage = () => {
         onClick={() => setDisabled((prevState) => !prevState)}>
         {'on/off'}
       </button>
-    </div>
+    </SomeDiv>
   );
 };
 

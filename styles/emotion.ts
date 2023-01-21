@@ -1,66 +1,44 @@
-import { css, cx, keyframes, injectGlobal } from '@emotion/css';
+import { css, keyframes } from '@emotion/react';
 
-injectGlobal`
+type ThemeType = typeof theme;
+
+declare module '@emotion/react' {
+  interface Theme extends ThemeType {
+    colors: typeof theme.colors;
+  }
+}
+
+export const globalStyles = css`
   * {
     box-sizing: border-box;
-  }
-
-  body {
-    background: #DFCFBE;
-    font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
   }
 `;
 
-const basicStyles = css`
-  background-color: white;
-  color: cornflowerblue;
-  border: 1px solid lightgreen;
-  border-right: none;
-  border-bottom: none;
-  box-shadow: 5px 5px 0 0 lightgreen, 10px 10px 0 0 lightyellow;
-  transition: all 0.1s linear;
-  margin: 3rem 0;
-  padding: 1rem 0.5rem;
-`;
+export const theme = {
+  colors: {
+    primary: 'hotpink',
+  },
+};
 
-const otherStyles = css`
-  background-color: red;
-  padding: 10px;
-  margin-bottom: 10px;
-`;
-
-const someMoreBasicStyles = css`
+export const someMoreBasicStyles = css`
   background-color: green;
   color: white;
   margin-bottom: 10px;
   padding: 10px;
 `;
 
-const someCssAsObject = css({
+export const someCssAsObject = css({
   background: 'orange',
   color: 'white',
   padding: '10px',
   marginBottom: '10px',
 });
 
-const combinedAsArray = css([someMoreBasicStyles, someCssAsObject]);
+export const combinedAsArray = css([someMoreBasicStyles, someCssAsObject]);
 
-const cls1 = css`
-  font-size: 20px;
-  padding: 5px;
-  background: green;
-  color: orange;
-`;
-const cls2 = css`
-  font-size: 20px;
-  padding: 15px;
-  background: blue;
-  color: white;
-`;
-
-const cxExample = cx(cls1, cls2);
-
-const bounce = keyframes`
+export const bounce = keyframes`
   from, 20%, 53%, 80%, to {
     transform: translate3d(0, 0, 0);
   }
@@ -75,7 +53,7 @@ const bounce = keyframes`
   }
 `;
 
-const keyframesExample = css([
+export const keyframesExample = css([
   bounce,
   css({
     marginTop: '50px',
@@ -88,5 +66,3 @@ const keyframesExample = css([
     transformOrigin: 'center',
   }),
 ]);
-
-export { combinedAsArray, cxExample, keyframesExample, someCssAsObject, someMoreBasicStyles, otherStyles, basicStyles };
