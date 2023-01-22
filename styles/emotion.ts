@@ -1,4 +1,5 @@
 import { css, keyframes } from '@emotion/react';
+import { markdownLightStyle } from './githubMarkdown';
 
 type ThemeType = typeof theme;
 
@@ -8,35 +9,25 @@ declare module '@emotion/react' {
   }
 }
 
-export const globalStyles = css`
+const defaultStyles = css`
   * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
+
+  body {
+    padding: 30px 50px;
+  }
 `;
+
+export const globalStyles = css([defaultStyles, markdownLightStyle]);
 
 export const theme = {
   colors: {
     primary: 'hotpink',
   },
 };
-
-export const someMoreBasicStyles = css`
-  background-color: green;
-  color: white;
-  margin-bottom: 10px;
-  padding: 10px;
-`;
-
-export const someCssAsObject = css({
-  background: 'orange',
-  color: 'white',
-  padding: '10px',
-  marginBottom: '10px',
-});
-
-export const combinedAsArray = css([someMoreBasicStyles, someCssAsObject]);
 
 export const bounce = keyframes`
   from, 20%, 53%, 80%, to {
