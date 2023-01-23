@@ -4,10 +4,14 @@ import dayjs from 'dayjs';
 
 import { MarkdownViewer, Header } from '@components/PostDetail';
 import { css } from '@emotion/css';
+import withPostDetailHead from '../../hoc/withPostDetailHead';
 
 const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
 
-export default function PostPage({ markdown, createdAt }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default withPostDetailHead(function PostPage({
+  markdown,
+  createdAt,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div
       className={css`
@@ -19,7 +23,7 @@ export default function PostPage({ markdown, createdAt }: InferGetStaticPropsTyp
       <Comment />
     </div>
   );
-}
+});
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const fs = await import('fs');

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -7,6 +8,8 @@ import { css } from '@emotion/css';
 export default function Header({ createdAt }: { createdAt: string }) {
   const router = useRouter();
   const title = router.query['postTitle'] as string;
+
+  const [imageSrc, setImageSrc] = useState<string>(`/thumbnail/${title}.jpeg`);
 
   return (
     <>
@@ -18,7 +21,7 @@ export default function Header({ createdAt }: { createdAt: string }) {
         <CreatedAtSpan>{createdAt}</CreatedAtSpan>
       </div>
       <Image
-        src={`/../public/thumbnail/${title}.jpeg`}
+        src={imageSrc}
         alt={'썸네일 이미지'}
         width={600}
         height={300}
@@ -27,6 +30,7 @@ export default function Header({ createdAt }: { createdAt: string }) {
           height: 100%;
           padding-bottom: 40px;
         `}
+        onError={() => setImageSrc('/thumbnail/default_thumbnail.jpeg')}
       />
     </>
   );
