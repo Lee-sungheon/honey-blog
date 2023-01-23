@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps<{ markdown: string }> = asyn
     const fs = await import('fs');
     const markdown = fs.readFileSync(`markdown/${postTitle}.md`, 'utf-8');
 
-    return { props: { markdown }};
+    return { props: { markdown } };
   } catch (error) {
     console.error(error);
     return {
