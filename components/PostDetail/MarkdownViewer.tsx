@@ -3,16 +3,13 @@ import remarkGfm from 'remark-gfm';
 import { Prism } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
+import { formatMarkdown } from '@utils/string';
+
 export default function MarkdownViewer({ markdown }: { markdown: string }) {
   return (
     <div className={'markdown-body'}>
       <ReactMarkdown
-        children={markdown
-          .replace(/\n\s\n\s/gi, '\n\n&nbsp;\n\n')
-          .replace(/\*\*/gi, '@$_%!^')
-          .replace(/\**\*/gi, '/')
-          .replace(/@\$_%!\^/gi, '**')
-          .replace(/<\/?u>/gi, '*')}
+        children={formatMarkdown(markdown)}
         remarkPlugins={[remarkGfm]}
         components={{
           code({ inline, className, children, ...props }) {

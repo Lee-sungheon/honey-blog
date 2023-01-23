@@ -26,6 +26,9 @@
       "@hooks/*": ["hooks/*"],
       "@markdown/*": ["markdown/*"],
       "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@constants/*": ["constants/*"],
+      "@hoc/*": ["hoc/*"]
     },
   },
   "include": [

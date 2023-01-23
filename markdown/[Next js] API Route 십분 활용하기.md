@@ -7,7 +7,7 @@
 이 `API Route` 는 `next.js`의 자체 서버를 사용해서 다른 서버가 필요없이 서버리스하게 API를 간단하게 만들 수 있다는 장점이 있다. 이를 잘 활용하면 개발을 하다가 `Backend API` 가 필요한 시점에서 백엔드에게 API 요청을 하거나, 따로 API 서버를 팔 필요가 없이 프론트단에서 처리를 할 수가 있게 된다.
 
 `Next API Routes` 가 뭔지 모르겠다면 아래 공식문서를 참조하길 추천한다.
-> Next API Routes : https://nextjs.org/docs/api-routes/introduction
+> [Next API Routes](https://nextjs.org/docs/api-routes/introduction)
 
 
 
@@ -74,9 +74,9 @@ export default async function next-posts(req, res) {
 ## 2️⃣ 쿠키 저장
 ---
 애플리케이션을 개발하면서 클라이언트에서 쿠키를 다루다보면 발생하는 이슈가 하나 있는데, 바로 쿠키의 `expires` 문제이다.
->
-브라우저별 쿠키 expires 정책 확인하기
-https://www.cookiestatus.com/
+
+> [브라우저별 쿠키 expires 정책 확인하기](https://www.cookiestatus.com/)
+
 
 위 사이트의 쿠키 정책을 확인해보면 `safari` 나 `brave` 브라우저에서는 `document.cookie` 를 사용해서 쿠키를 설정하면 `최대 expires 설정 기간`이 `7일` 밖에 되지 않는다. 즉, `클라이언트단에서 쿠키를 설정하면 브라우저에 따라 최대 7일까지만 쿠키가 남는다`는 것이다.
 

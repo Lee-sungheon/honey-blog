@@ -1,10 +1,10 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';
 import dayjs from 'dayjs';
+import { css } from '@emotion/css';
 
 import { MarkdownViewer, Header } from '@components/PostDetail';
-import { css } from '@emotion/css';
-import withPostDetailHead from '../../hoc/withPostDetailHead';
+import withPostDetailHead from '@hoc/withPostDetailHead';
 
 const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
 
