@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 
 export default function MarkdownViewer({ markdown }: { markdown: string }) {
   const router = useRouter();
@@ -26,8 +26,7 @@ export default function MarkdownViewer({ markdown }: { markdown: string }) {
             return !inline && match ? (
               <Prism
                 children={String(children).replace(/\n$/, '')}
-                // @ts-ignore
-                style={atomDark}
+                style={atomDark as { [p: string]: any }}
                 language={match[1]}
                 PreTag={'div'}
                 {...props}
