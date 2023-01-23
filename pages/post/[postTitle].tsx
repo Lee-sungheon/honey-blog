@@ -17,11 +17,9 @@ export const getServerSideProps: GetServerSideProps<{ markdown: string }> = asyn
   try {
     const postTitle = (ctx.query['postTitle'] as string) ?? '';
     const fs = await import('fs');
-    const markdown = fs.readFileSync(`markdown/${postTitle}.md`, 'utf8');
+    const markdown = fs.readFileSync(`markdown/${postTitle}.md`, 'utf-8');
 
-    return {
-      props: { markdown: markdown },
-    };
+    return { props: { markdown }};
   } catch (error) {
     console.error(error);
     return {

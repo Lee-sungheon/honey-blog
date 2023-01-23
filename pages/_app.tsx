@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { Global, ThemeProvider } from '@emotion/react';
 import { globalStyles, theme } from '../styles/emotion';
 
-require('../mocks');
+// require('../mocks');
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
