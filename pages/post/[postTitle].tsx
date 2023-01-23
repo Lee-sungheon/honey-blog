@@ -1,15 +1,23 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import MarkdownViewer from '@components/MarkdownViewer';
 import dynamic from 'next/dynamic';
-// import Comment from '@components/Comment';
-const Comment = dynamic(() => import('@components/Comment'), { ssr: false });
+import dayjs from 'dayjs';
 
-export default function PostPage({ markdown }: InferGetStaticPropsType<typeof getStaticProps>) {
+import { MarkdownViewer, Header } from '@components/PostDetail';
+import { css } from '@emotion/css';
+
+const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
+
+export default function PostPage({ markdown, createdAt }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
+    <div
+      className={css`
+        margin: 0 auto;
+        max-width: 780px;
+      `}>
+      <Header createdAt={createdAt} />
       <MarkdownViewer markdown={markdown} />
       <Comment />
-    </>
+    </div>
   );
 }
 
@@ -26,13 +34,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<{ markdown: string }> = async (ctx) => {
+export const getStaticProps: GetStaticProps<{ markdown: string; createdAt: string }> = async (ctx) => {
   try {
-    const fs = await import('fs');
+    const fs = require('fs');
+    const fsPromises = require('fs').promises;
     const markdown = fs.readFileSync(`markdown/${ctx.params?.postTitle}.md`, 'utf-8');
+    const stats = await fsPromises.stat(`markdown/${ctx.params?.postTitle}.md`);
 
-    if (markdown) {
-      return { props: { markdown } };
+    if (stats.birthtime && markdown) {
+      const createdAt = dayjs(stats.birthtime).format('YYYY-MM-DD HH:mm');
+      return { props: { markdown, createdAt } };
     } else {
       return {
         redirect: {

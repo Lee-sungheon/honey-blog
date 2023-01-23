@@ -17,7 +17,7 @@ const defaultStyles = css`
   }
 
   body {
-    padding: 30px 50px;
+    padding: 30px 20px;
   }
 `;
 

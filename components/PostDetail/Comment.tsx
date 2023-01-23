@@ -1,6 +1,11 @@
+import { css } from '@emotion/css';
+
 export default function Comment() {
   return (
     <div
+      className={css`
+        padding-top: 40px;
+      `}
       ref={(elem) => {
         if (!elem) {
           return;
