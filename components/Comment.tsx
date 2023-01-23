@@ -8,7 +8,7 @@ export default function Comment() {
         const scriptElem = document.createElement('script');
         scriptElem.src = 'https://utteranc.es/client.js';
         scriptElem.async = true;
-        scriptElem.setAttribute('repo', 'sancy1003/Lee-sungheon/honey-blog');
+        scriptElem.setAttribute('repo', 'Lee-sungheon/honey-blog');
         scriptElem.setAttribute('issue-term', 'pathname');
         scriptElem.setAttribute('theme', 'github-light');
         scriptElem.setAttribute('crossorigin', 'anonymous');
