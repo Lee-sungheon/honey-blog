@@ -2,10 +2,16 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 export default function MarkdownViewer({ markdown }: { markdown: string }) {
+  const router = useRouter();
+  const title = router.query['postTitle'] as string;
+
   return (
-    <div className="markdown-body">
+    <div className={'markdown-body'}>
+      <Title>{title}</Title>
       <ReactMarkdown
         children={markdown
           .replace(/\n\s\n\s/gi, '\n\n&nbsp;\n\n')
@@ -23,7 +29,7 @@ export default function MarkdownViewer({ markdown }: { markdown: string }) {
                 // @ts-ignore
                 style={atomDark}
                 language={match[1]}
-                PreTag="div"
+                PreTag={'div'}
                 {...props}
               />
             ) : (
@@ -37,3 +43,7 @@ export default function MarkdownViewer({ markdown }: { markdown: string }) {
     </div>
   );
 }
+
+const Title = styled.h1`
+  padding-bottom: 20px;
+`;
