@@ -57,5 +57,5 @@ const titleStyle = css`
 
 const dateStyle = css`
   font-size: 0.875rem;
-  color: #868E96;
+  color: #868e96;
 `;
