@@ -51,8 +51,9 @@ export const getStaticProps: GetStaticProps<{ postList: IPostListItem[] }> = asy
     }, Promise.resolve([]));
 
     const postList = await Promise.resolve(promisedPostList);
+    const sortedPostList = postList.sort((prevPost, nextPost) => (prevPost.createdAt > nextPost.createdAt ? -1 : 1));
 
-    return { props: { postList } };
+    return { props: { postList: sortedPostList } };
   } catch (error) {
     console.error(error);
     return {

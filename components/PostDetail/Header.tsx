@@ -33,5 +33,7 @@ const CreatedAtSpan = styled.span`
 const thumbnailStyle = css`
   width: 100%;
   height: 100%;
+  max-height: 80vh;
   padding-bottom: 40px;
+  object-fit: contain;
 `;
