@@ -5,7 +5,7 @@ import { css } from '@emotion/css';
 
 import { Thumbnail } from '@components/common';
 
-export default function Header({ createdAt }: { createdAt: string }) {
+export default function DetailHeader({ createdAt }: { createdAt: string }) {
   const router = useRouter();
   const title = router.query['postTitle'] as string;
 

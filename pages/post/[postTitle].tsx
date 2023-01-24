@@ -1,8 +1,10 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';
 import dayjs from 'dayjs';
+import { css } from '@emotion/react';
 
-import { MarkdownViewer, Header } from '@components/PostDetail';
+import { MarkdownViewer, DetailHeader } from '@components/PostDetail';
+import { Header } from '@components/PostList';
 import withPostDetailHead from '@hoc/withPostDetailHead';
 
 const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
@@ -12,11 +14,19 @@ export default withPostDetailHead(function PostPage({
   createdAt,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div>
-      <Header createdAt={createdAt} />
-      <MarkdownViewer markdown={markdown} />
-      <Comment />
-    </div>
+    <>
+      <Header />
+      <div
+        css={css`
+          max-width: 780px;
+          margin: 0 auto;
+          padding-top: 30px;
+        `}>
+        <DetailHeader createdAt={createdAt} />
+        <MarkdownViewer markdown={markdown} />
+        <Comment />
+      </div>
+    </>
   );
 });
 

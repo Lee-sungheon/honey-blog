@@ -14,12 +14,27 @@ const defaultStyles = css`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: Apple SD Gothic Neo, Spoqa Han Sans, Noto Sans Korean, Apple Gothic, NanumBarunGothic, NanumGothic;
+
+    -ms-overflow-style: none;
+    scrollbarwidth: none;
+    touchaction: manipulation;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   body {
-    padding: 30px 20px;
-    max-width: 780px;
-    margin: 0 auto;
+    padding: 0px 20px 40px;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    outline: none;
   }
 `;
 

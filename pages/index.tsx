@@ -2,16 +2,26 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import dayjs from 'dayjs';
 
 import withHoneyLogHead from '@hoc/withHoneyLogHead';
-import { FlexCol } from '@components/common';
 import { getBeginningContent } from '@utils/string';
 import { IPostListItem } from '@types/index';
-import { PostList } from '@components/PostList';
+
+import { FlexCol } from '@components/common';
+import { PostList, Header } from '@components/PostList';
+import { css } from '@emotion/react';
 
 export default withHoneyLogHead(function MainPage({ postList }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <FlexCol>
-      <PostList postList={postList} />
-    </FlexCol>
+    <>
+      <Header />
+      <FlexCol
+        css={css`
+          max-width: 780px;
+          margin: 0 auto;
+          padding-top: 30px;
+        `}>
+        <PostList postList={postList} />
+      </FlexCol>
+    </>
   );
 });
 

@@ -27,34 +27,35 @@ function PostListItem({ post }: { post: IPostListItem }) {
   );
 }
 
-const containerStyle = css({
-  cursor: 'pointer',
-  padding: '20px 0',
-  overflow: 'hidden',
-  marginBottom: '20px',
-  gap: '8px',
-});
+const containerStyle = css`
+  cursor: pointer;
+  padding: 20px 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+  gap: 8px;
+`;
 
-const contentStyle = css({
-  fontSize: '1rem',
-  marginBottom: '9px',
+const contentStyle = css`
+  font-size: 1rem;
+  margin-bottom: 9px;
 
-  color: '#495057',
-  display: '-webkit-box',
-  wordWrap: 'break-word',
-  overflow: 'hidden',
-  '-webkit-line-clamp': '3',
-  '-webkit-box-orient': 'vertical',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'pre-wrap',
-});
+  color: #495057;
+  display: -webkit-box;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+`;
 
-const titleStyle = css({
-  fontSize: '1.5rem',
-  fontWeight: 'bold',
-});
+const titleStyle = css`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 9px;
+`;
 
-const dateStyle = css({
-  fontSize: '0.875rem',
-  color: '#868E96'
-});
+const dateStyle = css`
+  font-size: 0.875rem;
+  color: #868E96;
+`;
