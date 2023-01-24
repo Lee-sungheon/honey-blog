@@ -29,7 +29,7 @@
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
       "@hoc/*": ["hoc/*"],
-      "@types/*": ["types/*"]
+      "@type/index": ["types/index"]
     },
   },
   "include": [

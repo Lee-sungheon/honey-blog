@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import dayjs from 'dayjs';
 
-import { IPostListItem } from '@types/index';
+import { IPostListItem } from '@type/index';
 import { FlexCol, Thumbnail } from '@components/common';
 
 export default function PostList({ postList }: { postList: IPostListItem[] }) {

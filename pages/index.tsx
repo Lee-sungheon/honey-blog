@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 import withHoneyLogHead from '@hoc/withHoneyLogHead';
 import { getBeginningContent } from '@utils/string';
-import { IPostListItem } from '@types/index';
+import { IPostListItem } from '@type/index';
 
 import { FlexCol } from '@components/common';
 import { PostList, Header } from '@components/PostList';
