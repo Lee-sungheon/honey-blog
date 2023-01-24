@@ -18,6 +18,8 @@ const defaultStyles = css`
 
   body {
     padding: 30px 20px;
+    max-width: 780px;
+    margin: 0 auto;
   }
 `;
 

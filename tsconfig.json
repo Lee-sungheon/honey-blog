@@ -28,7 +28,8 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
-      "@hoc/*": ["hoc/*"]
+      "@hoc/*": ["hoc/*"],
+      "@types/*": ["types/*"]
     },
   },
   "include": [
