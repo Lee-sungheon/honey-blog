@@ -1,14 +1,12 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 
 import { SITE_URL } from '@constants/index';
 import { getBeginningContent } from '@utils/string';
 
 export default function withPostDetailHead(Component: AppProps['Component']) {
   return function withPostDetailHeadRender(props: AppProps['pageProps']) {
-    const router = useRouter();
-    const title = router.query['postTitle'] as string;
+    const title = props['title'] ?? '';
     const content = getBeginningContent(props.markdown ?? '', 250);
 
     return (
