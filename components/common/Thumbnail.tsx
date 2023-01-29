@@ -6,7 +6,7 @@ export default function Thumbnail({
   className,
   ...props
 }: { imageName: string; className?: string } & Omit<ImageProps, 'src' | 'alt'>) {
-  const [imageSrc, setImageSrc] = useState<string>(`/thumbnail/${imageName}.jpeg`);
+  const [imageSrc, setImageSrc] = useState<string>(`/thumbnail/${imageName}`);
 
   return (
     <Image

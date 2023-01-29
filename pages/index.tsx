@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import dayjs from 'dayjs';
 
 import withHoneyLogHead from '@hoc/withHoneyLogHead';
-import { getBeginningContent } from '@utils/string';
+import { getBeginningContent, getMarkdownSplit } from '@utils/string';
 import { IPostListItem } from '@type/index';
 
 import { FlexCol } from '@components/common';
@@ -30,11 +30,14 @@ export const getStaticProps: GetStaticProps<{ postList: IPostListItem[] }> = asy
     const fs = require('fs');
     const fsPromises = require('fs').promises;
 
-    const markdownList: string[] = fs.readdirSync('markdown');
+    const markdownNameList: string[] = fs.readdirSync('markdown');
 
-    const promisedPostList = markdownList.reduce(async (acc: Promise<IPostListItem[]>, markdown) => {
-      const markdownFile = fs.readFileSync(`markdown/${markdown}`, 'utf-8');
-      const stats = await fsPromises.stat(`markdown/${markdown}`);
+    const promisedPostList = markdownNameList.reduce(async (acc: Promise<IPostListItem[]>, markdownName) => {
+      const markdownFile = fs.readFileSync(`markdown/${markdownName}`, 'utf-8');
+      const stats = await fsPromises.stat(`markdown/${markdownName}`);
+
+      const { markdown, markdownInfo } = getMarkdownSplit(markdownFile);
+
       const createdAt = dayjs(stats.birthtime).format('YYYY-MM-DD HH:mm');
 
       const promisedAcc = await acc;
@@ -43,9 +46,10 @@ export const getStaticProps: GetStaticProps<{ postList: IPostListItem[] }> = asy
         ...promisedAcc,
         {
           id: stats.ino,
-          title: markdown.split('.md')[0],
-          content: getBeginningContent(markdownFile, 250),
+          title: markdownInfo['title'] ?? '',
+          content: getBeginningContent(markdown, 250),
           createdAt,
+          thumbnail: markdownInfo['thumbnail'] ?? '',
         },
       ]);
     }, Promise.resolve([]));

@@ -1,3 +1,9 @@
+---
+title: [React Hook Form] useRef 연결하여 사용하기
+date: 2022-8-16 00:00:00
+thumbnail: [React Hook Form] useRef 연결하여 사용하기.jpeg
+---
+
 `React-use-Form`을 사용하다 보면, `useRef`를 연결하여 사용할 일(스크롤 관련이나, 포커싱 관련 이벤트를 처리할 때)이 종종 있다.
 
 예를 들어, `textarea`의 인풋 창을 수정할 때 `value`의 높이에 따라 `textarea`의 크기를 조절할 때가 있다.

@@ -1,3 +1,9 @@
+---
+title: [React + Javascript] 뒤로가기 막기(이벤트 최소화)
+date: 2021-7-31 00:00:00
+thumbnail: [React + Javascript] 뒤로가기 막기(이벤트 최소화).jpeg
+---
+
 사용자가 뒤로가기를 눌렀을 때, 이를 막는 팝업을 띄우는 이슈를 처리할 일이 생겼다.
 ```js
 history.pushState(null, null, location.href);

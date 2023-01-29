@@ -1,3 +1,9 @@
+---
+title: [Next js] API Route 십분 활용하기
+date: 2022-11-12 00:00:00
+thumbnail: [Next js] API Route 십분 활용하기.jpeg
+---
+
 ## 🎯 Intro
 ---
 `Next.js` 를 꽤 오랜 기간 사용하다 보니 프론트에서 서버(`getServerSideProps`, `getInitialProps`)를 사용할 수 있는 점 이 상당히 매력적이라는걸 느끼는 것 같다.

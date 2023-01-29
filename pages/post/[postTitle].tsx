@@ -6,12 +6,16 @@ import { css } from '@emotion/react';
 import { MarkdownViewer, DetailHeader } from '@components/PostDetail';
 import { Header } from '@components/PostList';
 import withPostDetailHead from '@hoc/withPostDetailHead';
+import { IPostDetail } from '@type/index';
+import { getMarkdownSplit } from '@utils/string';
 
 const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
 
 export default withPostDetailHead(function PostPage({
   markdown,
   createdAt,
+  title,
+  thumbnail,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -22,7 +26,7 @@ export default withPostDetailHead(function PostPage({
           margin: 0 auto;
           padding-top: 30px;
         `}>
-        <DetailHeader createdAt={createdAt} />
+        <DetailHeader title={title} createdAt={createdAt} thumbnail={thumbnail} />
         <MarkdownViewer markdown={markdown} />
         <Comment />
       </div>
@@ -43,16 +47,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<{ markdown: string; createdAt: string }> = async (ctx) => {
+export const getStaticProps: GetStaticProps<IPostDetail> = async (ctx) => {
   try {
     const fs = require('fs');
     const fsPromises = require('fs').promises;
-    const markdown = fs.readFileSync(`markdown/${ctx.params?.postTitle}.md`, 'utf-8');
+    const markdownFile = fs.readFileSync(`markdown/${ctx.params?.postTitle}.md`, 'utf-8');
     const stats = await fsPromises.stat(`markdown/${ctx.params?.postTitle}.md`);
 
-    if (stats && markdown) {
-      const createdAt = dayjs(stats.birthtime).format('YYYY-MM-DD HH:mm');
-      return { props: { markdown, createdAt, id: stats.ino } };
+    const { markdown, markdownInfo } = getMarkdownSplit(markdownFile);
+
+    if (stats && markdown && markdownInfo) {
+      const createdAt = dayjs(markdownInfo['date']).format('YYYY-MM-DD HH:mm') ?? '';
+      return {
+        props: {
+          markdown,
+          createdAt,
+          title: markdownInfo['title'] ?? '',
+          id: stats.ino,
+          thumbnail: markdownInfo['thumbnail'] ?? '',
+        },
+      };
     } else {
       return {
         redirect: {

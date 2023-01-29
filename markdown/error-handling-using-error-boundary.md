@@ -1,3 +1,9 @@
+---
+title: [React] ErrorBoundary 사용하여 에러 핸들링 하기
+date: 2021-10-30 00:00:00
+thumbnail: [React] ErrorBoundary 사용하여 에러 핸들링 하기.jpeg
+---
+
 ### 📌 Intro
 ---
 React는 16 버전부터 앱의 하위 컴포넌트 트리에서 발생하는 자바스크립트 에러를 기록하며 깨진 컴포넌트 트리 대신 폴백 UI를 보여주는 `ErrorBoundary`라는 개념을 도입하였다.

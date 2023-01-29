@@ -1,3 +1,9 @@
+---
+title: [React] Infinite Scroll 구현 (IntersectionObserver)
+date: 2021-12-4 00:00:00
+thumbnail: [React] Infinite Scroll 구현 (IntersectionObserver).jpeg
+---
+
 ### 📌 Intro
 ---
 `Infinite Scroll` 은 말그대로 무한한 스크롤을 의미한다.

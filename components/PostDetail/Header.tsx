@@ -1,19 +1,20 @@
-import { useRouter } from 'next/router';
-
 import styled from '@emotion/styled';
 import { css } from '@emotion/css';
 
 import { Thumbnail } from '@components/common';
 
-export default function DetailHeader({ createdAt }: { createdAt: string }) {
-  const router = useRouter();
-  const title = router.query['postTitle'] as string;
+interface IDetailHeaderProps {
+  title: string;
+  createdAt: string;
+  thumbnail: string;
+}
 
+export default function DetailHeader({ title, createdAt, thumbnail }: IDetailHeaderProps) {
   return (
     <>
       <Title>{title}</Title>
       <CreatedAtSpan>{createdAt}</CreatedAtSpan>
-      <Thumbnail imageName={title} className={thumbnailStyle} />
+      <Thumbnail imageName={thumbnail} className={thumbnailStyle} />
     </>
   );
 }

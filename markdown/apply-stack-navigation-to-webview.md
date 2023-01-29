@@ -1,3 +1,9 @@
+---
+title: [React Native] Webview에 Stack Navigation 적용하기
+date: 2022-2-5 00:00:00
+thumbnail: [React Native] Webview에 Stack Navigation 적용하기.jpeg
+---
+
 ## 🎯 Intro
 ---
 최근 사이드 프로젝트에서 앱 개발이 필요해 `하이브리드 앱` 을 만들고 있는데, `React Native` 와 `Webview` 를 이용하여 앱을 구현하고 있다.

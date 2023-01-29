@@ -1,3 +1,9 @@
+---
+title: [Next js] Serverless + Github Actions으로 Next js 배포 및 자동화(CI,CD)하기
+date: 2021-9-24 00:00:00
+thumbnail: [Next js] Serverless + Github Actions으로 Next js 배포 및 자동화(CI,CD)하기.jpeg
+---
+
 ### 📌 Intro
 ---
 `Next js` 는 CSR과 SSR이 결합되어 있는 형태(나아가서 SSG까지..)라 다른 프론트 프로젝트 배포보다 신경 써야 할 일이 많다.
