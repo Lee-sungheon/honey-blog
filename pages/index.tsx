@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<{ postList: IPostListItem[] }> = asy
 
       const { markdown, markdownInfo } = getMarkdownSplit(markdownFile);
 
-      const createdAt = dayjs(stats.birthtime).format('YYYY-MM-DD HH:mm');
+      const createdAt = dayjs(markdownInfo['date']).format('YYYY-MM-DD HH:mm') ?? '';
 
       const promisedAcc = await acc;
 
