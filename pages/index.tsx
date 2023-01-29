@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps<{ postList: IPostListItem[] }> = asy
         ...promisedAcc,
         {
           id: stats.ino,
+          markdownName: markdownName.replace('.md', ''),
           title: markdownInfo['title'] ?? '',
           content: getBeginningContent(markdown, 250),
           createdAt,

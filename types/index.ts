@@ -1,6 +1,7 @@
 export interface IPostListItem {
   id: number;
   title: string;
+  markdownName: string;
   createdAt: string;
   content: string;
   thumbnail: string;

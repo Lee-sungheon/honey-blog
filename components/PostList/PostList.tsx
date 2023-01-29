@@ -18,7 +18,7 @@ export default function PostList({ postList }: { postList: IPostListItem[] }) {
 function PostListItem({ post }: { post: IPostListItem }) {
   const router = useRouter();
   return (
-    <FlexCol alignItems={'start'} css={containerStyle} onClick={() => router.push(`/post/${post.title}`)}>
+    <FlexCol alignItems={'start'} css={containerStyle} onClick={() => router.push(`/post/${post.markdownName}`)}>
       <Thumbnail imageName={post.thumbnail} style={{ width: '100%', maxHeight: '200px', objectFit: 'cover' }} />
       <p css={titleStyle}>{post.title}</p>
       <p css={contentStyle}>{post.content}</p>
