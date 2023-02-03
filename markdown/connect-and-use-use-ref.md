@@ -1,6 +1,6 @@
 ---
 title: [React Hook Form] useRef 연결하여 사용하기
-date: 2022-8-16 00:00:00
+date: 2021-8-16 00:00:00
 thumbnail: [React Hook Form] useRef 연결하여 사용하기.jpeg
 ---
 
