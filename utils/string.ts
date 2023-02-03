@@ -29,6 +29,6 @@ export const getMarkdownSplit = (markdownFile: string) => {
 
   return {
     markdownInfo,
-    markdown: markdown.join(''),
+    markdown: markdown.join('---'),
   };
 };
