@@ -11,6 +11,7 @@ export default function withHoneyLogHead(Component: AppProps['Component']) {
         <Head>
           <title>{title}</title>
           <meta name="google-site-verification" content="DLO38KAU7M6ZbYDtGdIdi1fr4AXOkCNuAXOGwtgVzR8" />
+          <meta name="naver-site-verification" content="dc58ceaeb5cd037209c732a7a2ac3d9e65d00086" />
           <meta name="description" content={title} />
           <meta name="keywords" content={title} />
           <meta property="published_time" content={props?.createdAt?.writtenAt ?? ''} />
