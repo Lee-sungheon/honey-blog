@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -20,6 +21,7 @@
     "eslint-plugin-testing-library": "^5.7.0",
     "jotai": "^1.13.1",
     "next": "^13.1.4",
+    "next-sitemap": "^3.1.49",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.5y",

@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Allow: /c
+Allow: /
+
+# Host
+Host: https://honeylog.netlify.app
+
+# Sitemaps
+Sitemap: https://honeylog.netlify.app/sitemap.xml
