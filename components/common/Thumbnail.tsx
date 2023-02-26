@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 
 export default function Thumbnail({
@@ -7,6 +7,10 @@ export default function Thumbnail({
   ...props
 }: { imageName: string; className?: string } & Omit<ImageProps, 'src' | 'alt'>) {
   const [imageSrc, setImageSrc] = useState<string>(`/thumbnail/${imageName}`);
+
+  useEffect(() => {
+    setImageSrc(`/thumbnail/${imageName}`);
+  }, [imageName]);
 
   return (
     <Image

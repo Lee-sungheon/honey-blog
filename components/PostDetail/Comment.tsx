@@ -5,6 +5,11 @@ export default function Comment() {
     if (!elem) {
       return;
     }
+
+    if (elem.children) {
+      elem.replaceChildren();
+    }
+
     const scriptElem = document.createElement('script');
     scriptElem.src = 'https://utteranc.es/client.js';
     scriptElem.async = true;

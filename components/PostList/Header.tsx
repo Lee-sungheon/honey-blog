@@ -1,21 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { css } from '@emotion/react';
 
 import { FlexRow } from '@components/common';
-import honeyLogSvg from '../../public/hoenylog.svg';
+
+import honeyLogSvg from 'public/hoenylog.svg';
 
 export default function Header() {
   return (
-    <FlexRow justifyContent={'space-between'} css={containerStyle}>
-      <Link href={'/'}>
-        <FlexRow>
-          <Image src={honeyLogSvg} alt={'꿀벌 아이콘'} width={40} height={40} />
-          <p css={titleStyle}>{'HoneyLog'}</p>
-        </FlexRow>
-      </Link>
-    </FlexRow>
+    <header>
+      <FlexRow justifyContent={'space-between'} css={containerStyle}>
+        <Link href={'/'}>
+          <FlexRow>
+            <Image src={honeyLogSvg} alt={'꿀벌 아이콘'} width={40} height={40} />
+            <p css={titleStyle}>{'HoneyLog'}</p>
+          </FlexRow>
+        </Link>
+      </FlexRow>
+    </header>
   );
 }
 

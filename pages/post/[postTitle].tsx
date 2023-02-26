@@ -1,26 +1,25 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import dynamic from 'next/dynamic';
 import dayjs from 'dayjs';
 import { css } from '@emotion/react';
 
-import { MarkdownViewer, DetailHeader } from '@components/PostDetail';
+import { MarkdownViewer, DetailHeader, PrevNextPost, Comment } from '@components/PostDetail';
 import { Header } from '@components/PostList';
 import withPostDetailHead from '@hoc/withPostDetailHead';
 import { IPostDetail } from '@type/index';
 import { getMarkdownSplit } from '@utils/string';
-
-const Comment = dynamic(() => import('@components/PostDetail/Comment'), { ssr: false });
 
 export default withPostDetailHead(function PostPage({
   markdown,
   createdAt,
   title,
   thumbnail,
+  prevPost,
+  nextPost,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Header />
-      <div
+      <section
         css={css`
           max-width: 780px;
           margin: 0 auto;
@@ -28,8 +27,9 @@ export default withPostDetailHead(function PostPage({
         `}>
         <DetailHeader title={title} createdAt={createdAt} thumbnail={thumbnail} />
         <MarkdownViewer markdown={markdown} />
+        <PrevNextPost prevPost={prevPost} nextPost={nextPost} />
         <Comment />
-      </div>
+      </section>
     </>
   );
 });
@@ -49,12 +49,33 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<IPostDetail> = async (ctx) => {
   try {
+    const postTitle = ctx.params?.postTitle as string;
     const fs = require('fs');
     const fsPromises = require('fs').promises;
-    const markdownFile = fs.readFileSync(`markdown/${ctx.params?.postTitle}.md`, 'utf-8');
-    const stats = await fsPromises.stat(`markdown/${ctx.params?.postTitle}.md`);
+    const markdownFile = fs.readFileSync(`markdown/${postTitle}.md`, 'utf-8');
+    const stats = await fsPromises.stat(`markdown/${postTitle}.md`);
 
     const { markdown, markdownInfo } = getMarkdownSplit(markdownFile);
+
+    const markdownNameList: string[] = fs.readdirSync('markdown');
+
+    const markdownInfoList = markdownNameList.map((markdownName) => {
+      const markdownFile = fs.readFileSync(`markdown/${markdownName}`, 'utf-8');
+      const { markdownInfo } = getMarkdownSplit(markdownFile);
+      const createdAt = dayjs(markdownInfo['date']).format('YYYY-MM-DD HH:mm') ?? '';
+
+      return {
+        markdownName: markdownName.replace('.md', ''),
+        title: markdownInfo['title'] ?? '',
+        createdAt,
+      };
+    });
+
+    const sortedMarkdownInfoList = markdownInfoList.sort((prevPost, nextPost) =>
+      prevPost.createdAt > nextPost.createdAt ? -1 : 1,
+    );
+
+    const markdownIndex = sortedMarkdownInfoList.findIndex((value) => value.markdownName === postTitle);
 
     if (stats && markdown && markdownInfo) {
       const createdAt = dayjs(markdownInfo['date']).format('YYYY-MM-DD HH:mm') ?? '';
@@ -65,6 +86,8 @@ export const getStaticProps: GetStaticProps<IPostDetail> = async (ctx) => {
           title: markdownInfo['title'] ?? '',
           id: stats.ino,
           thumbnail: markdownInfo['thumbnail'] ?? '',
+          prevPost: sortedMarkdownInfoList[markdownIndex - 1] ?? null,
+          nextPost: sortedMarkdownInfoList[markdownIndex + 1] ?? null,
         },
       };
     } else {
