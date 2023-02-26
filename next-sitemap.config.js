@@ -1,7 +1,7 @@
-const siteUrl = 'https://honeylog.netlify.app';
+import { SITE_URL } from '@constants/index';
 
 module.exports = {
-  siteUrl,
+  siteUrl: SITE_URL,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [

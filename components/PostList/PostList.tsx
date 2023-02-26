@@ -4,8 +4,18 @@ import dayjs from 'dayjs';
 
 import { IPostListItem } from '@type/index';
 import { FlexCol, Thumbnail } from '@components/common';
+import { useEffect } from 'react';
 
 export default function PostList({ postList }: { postList: IPostListItem[] }) {
+  useEffect(() => {
+    const scrollHeight = sessionStorage.getItem('scrollHeight');
+
+    if (scrollHeight) {
+      setTimeout(() => window.scrollTo(0, parseInt(scrollHeight)), 0);
+      sessionStorage.removeItem('scrollHeight');
+    }
+  }, []);
+
   return (
     <FlexCol>
       {postList.map((post) => (
@@ -17,8 +27,13 @@ export default function PostList({ postList }: { postList: IPostListItem[] }) {
 
 function PostListItem({ post }: { post: IPostListItem }) {
   const router = useRouter();
+  const moveToPostDetail = () => {
+    sessionStorage.setItem('scrollHeight', String(window.scrollY));
+    router.push(`/post/${post.markdownName}`).then();
+  };
+
   return (
-    <FlexCol alignItems={'start'} css={containerStyle} onClick={() => router.push(`/post/${post.markdownName}`)}>
+    <FlexCol alignItems={'start'} css={containerStyle} onClick={moveToPostDetail}>
       <Thumbnail imageName={post.thumbnail} style={{ width: '100%', maxHeight: '200px', objectFit: 'cover' }} />
       <p css={titleStyle}>{post.title}</p>
       <p css={contentStyle}>{post.content}</p>
