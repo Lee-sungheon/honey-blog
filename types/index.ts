@@ -1,15 +1,8 @@
-export interface IPostListItem {
+export interface IPostListItem extends IMarkdownInfo {
   id: number;
-  title: string;
-  markdownName: string;
   createdAt: string;
   content: string;
   thumbnail: string;
-}
-
-export interface IPrevNextPost {
-  markdownName: string;
-  title: string;
 }
 
 export interface IPostDetail {
@@ -18,6 +11,11 @@ export interface IPostDetail {
   createdAt: string;
   markdown: string;
   thumbnail: string;
-  prevPost: IPrevNextPost;
-  nextPost: IPrevNextPost;
+  prevPost: IMarkdownInfo;
+  nextPost: IMarkdownInfo;
+}
+
+interface IMarkdownInfo {
+  markdownName: string;
+  title: string;
 }

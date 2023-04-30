@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
 
 import { IPrevNextPost } from '@type/index';
 import { FlexCol, FlexRow } from '@components/common';
-import { css } from '@emotion/react';
 
 interface PrevNextPostProps {
   prevPost: IPrevNextPost | null;

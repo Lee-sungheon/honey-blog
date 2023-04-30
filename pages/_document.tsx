@@ -1,6 +1,5 @@
+import { Fragment } from 'react';
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import * as React from 'react';
-
 import createEmotionServer from '@emotion/server/create-instance';
 import { cache } from '@emotion/css';
 
@@ -22,10 +21,10 @@ export default class AppDocument extends Document {
     return {
       ...initialProps,
       styles: (
-        <React.Fragment>
+        <Fragment>
           {initialProps.styles}
           <style data-emotion={`css ${ids.join(' ')}`} dangerouslySetInnerHTML={{ __html: css }} />
-        </React.Fragment>
+        </Fragment>
       ),
     };
   }
