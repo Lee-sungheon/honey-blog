@@ -15,7 +15,7 @@ export interface IPostDetail {
   nextPost: IMarkdownInfo;
 }
 
-interface IMarkdownInfo {
+export interface IMarkdownInfo {
   markdownName: string;
   title: string;
 }

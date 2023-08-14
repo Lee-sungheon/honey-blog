@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/react';
+import { css, keyframes, Global } from '@emotion/react';
 import { markdownLightStyle } from './githubMarkdown';
 
 type ThemeType = typeof theme;

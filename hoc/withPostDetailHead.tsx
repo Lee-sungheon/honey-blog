@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
 import { AppProps } from 'next/app';
 
 import { SITE_URL } from '@constants/index';
@@ -7,10 +7,10 @@ import { getBeginningContent } from '@utils/string';
 
 export default function withPostDetailHead(Component: AppProps['Component']) {
   return function withPostDetailHeadRender(props: AppProps['pageProps']) {
-    const router = useRouter();
+    const params = useParams();
 
     const title = props['title'] ?? '';
-    const postRoute = router.query['postTitle'] ?? '';
+    const postRoute = params['postTitle'] ?? '';
     const content = getBeginningContent(props.markdown ?? '', 250);
     const thumbnail = props['thumbnail'] ?? '';
 

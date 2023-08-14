@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
-import { IPrevNextPost } from '@type/index';
+import { IMarkdownInfo } from '@type/index';
 import { FlexCol, FlexRow } from '@components/common';
 
 interface PrevNextPostProps {
-  prevPost: IPrevNextPost | null;
-  nextPost: IPrevNextPost | null;
+  prevPost: IMarkdownInfo | null;
+  nextPost: IMarkdownInfo | null;
 }
 
 export default function PrevNextPost({ prevPost, nextPost }: PrevNextPostProps) {

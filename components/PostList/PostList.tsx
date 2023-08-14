@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { css } from '@emotion/react';
 import dayjs from 'dayjs';
 
 import { IPostListItem } from '@type/index';
 import { FlexCol, Thumbnail } from '@components/common';
-import { useEffect } from 'react';
 
 export default function PostList({ postList }: { postList: IPostListItem[] }) {
   useEffect(() => {
@@ -29,7 +29,7 @@ function PostListItem({ post }: { post: IPostListItem }) {
   const router = useRouter();
   const moveToPostDetail = () => {
     sessionStorage.setItem('scrollHeight', String(window.scrollY));
-    router.push(`/post/${post.markdownName}`).then();
+    router.push(`/post/${post.markdownName}`);
   };
 
   return (
