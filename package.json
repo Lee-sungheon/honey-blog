@@ -20,7 +20,7 @@
     "eslint-plugin-jest-dom": "^4.0.2",
     "eslint-plugin-testing-library": "^5.7.0",
     "jotai": "^1.13.1",
-    "next": "^13.4.1",
+    "next": "^13.4.13y",
     "next-sitemap": "^4.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
