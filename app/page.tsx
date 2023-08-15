@@ -10,7 +10,7 @@ async function getPostList() {
   const res = await fetch(`${SITE_URL}/api/post-list`, { next: { revalidate: 3600 } });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    return [];
   }
 
   return res.json();
