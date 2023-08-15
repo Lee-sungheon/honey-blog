@@ -7,7 +7,7 @@ import { FlexCol } from '@components/common';
 import { SITE_URL } from '@constants/index';
 
 async function getPostList() {
-  const res = await fetch(`${SITE_URL}/api/post-list`, { next: { revalidate: 3600 } });
+  const res = await fetch(`${SITE_URL}api/post-list`);
 
   if (!res.ok) {
     return [];
