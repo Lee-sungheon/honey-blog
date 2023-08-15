@@ -4,9 +4,10 @@ import styled from '@emotion/styled';
 
 import { Header, PostList } from '@components/PostList';
 import { FlexCol } from '@components/common';
+import { SITE_URL } from '@constants/index';
 
 async function getPostList() {
-  const res = await fetch('http://localhost:3000/api/post-list', { next: { revalidate: 3600 } });
+  const res = await fetch(`${SITE_URL}/api/post-list`, { next: { revalidate: 3600 } });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
